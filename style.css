@@ -9,3 +9,12 @@ button{
     width: 25%;
     margin: 5% 0% 5% 35%;
 }
+
+.highScores{
+    float: left;
+}
+
+.timer{
+    float: right;
+    /* display: none; */
+}
