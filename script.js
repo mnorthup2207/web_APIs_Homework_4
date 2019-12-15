@@ -1,3 +1,10 @@
+var startBtn = document.querySelector(".startBtn");
+var timerEl = document.querySelector(".timer");
+var h1El = document.querySelector(".h1El")
+var h2El = document.querySelector(".numInput")
+var pEl = document.querySelector(".para")
+var mainEl =document.querySelector(".main")
+
 var questions = [
     {
         title: "Commonly used data types DO NOT include:",
@@ -12,9 +19,8 @@ var questions = [
     ///etc.
 ];
 
-var timerEl = document.querySelector(".timer");
 
-// Timer functon and variables
+// Timer function and variables
 var secondsLeft = 60; // setting timer
 
 function setTime() {
@@ -24,7 +30,7 @@ function setTime() {
 
         if (secondsLeft === 0) {
             clearInterval(timerInterval);
-            sendMessage();
+            // sendMessage();
         }
 
     }, 1000);
@@ -40,5 +46,27 @@ function setTime() {
   
 //   }
   
-  setTime();
+
+
+
+startBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    setTime();
+    firstQ()
+    console.log(questions[0].title);
+
+    function firstQ() {
+        h1El.textContent = " ";
+        pEl.textContent = " ";
+        h2El.textContent = questions[0].title
+        
+        var olEl = document.createElement("ol")
+        olEl.textContent = "Select One.";
+        mainEl.appendChild(olEl);
+
+        
+    }
+
+
+});
 
