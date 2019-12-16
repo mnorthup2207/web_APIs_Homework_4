@@ -39,6 +39,9 @@ button{
 .nextHidden5{
     display: none;
 }
+.nextHidden6{
+    display: none;
+}
 
 .highScores{
     float: left;

@@ -4,6 +4,7 @@ var nextBtn2 = document.querySelector(".nextHidden2");
 var nextBtn3 = document.querySelector(".nextHidden3");
 var nextBtn4 = document.querySelector(".nextHidden4");
 var nextBtn5 = document.querySelector(".nextHidden5");
+var nextBtn6 = document.querySelector(".nextHidden6");
 var timerEl = document.querySelector(".timer");
 var highScoreEl = document.querySelector(".highScores");
 
@@ -61,20 +62,39 @@ function setTime() {
         }
         if (secondsLeft < 25) {
             timerEl.setAttribute("id", "timer");
+        };
+        if (secondsLeft === 0) {
+            h1El.textContent = " ";
+            h2El.textContent = " ";
+            olEl.textContent = " ";
+            liEl1.textContent = " ";
+            liEl2.textContent = " ";
+            liEl3.textContent = " ";
+            liEl4.textContent = " ";
+            nextBtn1.setAttribute("class", "nextHidden4")
+            nextBtn2.setAttribute("class", "nextHidden4")
+            nextBtn3.setAttribute("class", "nextHidden4")
+            nextBtn4.setAttribute("class", "nextHidden4")
+            nextBtn5.setAttribute("class", "nextHidden4")
+            nextBtn6.setAttribute("class", "nextUnhidden4")
+
+            var imgEl = document.createElement("img");
+            imgEl.setAttribute("src", "game_over.gif");
+            mainEl.appendChild(imgEl);
+
+            nextBtn6.addEventListener("click", function(event) {
+                event.preventDefault();
+                location.reload()
+
+            })
 
         };
 
     }, 1000);
 };
-// function sendMessage() {
-//     timeEl.textContent = " ";
+function sendMessage() {
 
-//     var imgEl = document.createElement("img");
-
-//     imgEl.setAttribute("src", "images/image_1.jpg");
-//     mainEl.appendChild(imgEl);
-
-//   }
+}
 
 // question functions
 function firstQ() {
@@ -169,12 +189,12 @@ function enterScore() {
     var name = document.createElement("label");
     name.textContent = "Enter Name:       ";
     mainEl.appendChild(name)
-    
+
     var nameInput = document.createElement("input");
     nameInput.setAttribute("type", "text");
     nameInput.setAttribute("placeholder", "name");
     mainEl.appendChild(nameInput);
-    
+
 
 };
 
@@ -236,7 +256,7 @@ nextBtn1.addEventListener("click", function (event) {
 
     liEl1.addEventListener("click", function (event) {
         event.preventDefault();
-        
+
 
         liEl1.textContent = "Sorry Wrong Answer";
         liEl2.textContent = "";
@@ -246,7 +266,7 @@ nextBtn1.addEventListener("click", function (event) {
     });
     liEl2.addEventListener("click", function (event) {
         event.preventDefault();
-        
+
 
         liEl1.textContent = "";
         liEl2.textContent = "Sorry Wrong Answer";
@@ -265,7 +285,7 @@ nextBtn1.addEventListener("click", function (event) {
     });
     liEl4.addEventListener("click", function (event) {
         event.preventDefault();
-        
+
 
         liEl1.textContent = "";
         liEl2.textContent = "";
@@ -290,7 +310,7 @@ nextBtn2.addEventListener("click", function (event) {
     });
     liEl2.addEventListener("click", function (event) {
         event.preventDefault();
-        
+
 
         liEl1.textContent = "";
         liEl2.textContent = "Sorry Wrong Answer";
@@ -309,7 +329,7 @@ nextBtn2.addEventListener("click", function (event) {
     });
     liEl4.addEventListener("click", function (event) {
         event.preventDefault();
-        
+
 
         liEl1.textContent = "";
         liEl2.textContent = "";
@@ -335,7 +355,7 @@ nextBtn3.addEventListener("click", function (event) {
     });
     liEl2.addEventListener("click", function (event) {
         event.preventDefault();
-    
+
 
         liEl1.textContent = "";
         liEl2.textContent = "Sorry Wrong Answer";
@@ -345,7 +365,7 @@ nextBtn3.addEventListener("click", function (event) {
     });
     liEl3.addEventListener("click", function (event) {
         event.preventDefault();
-        
+
 
         liEl1.textContent = "";
         liEl2.textContent = "";
@@ -369,7 +389,7 @@ nextBtn4.addEventListener("click", function (event) {
 
     liEl1.addEventListener("click", function (event) {
         event.preventDefault();
-        
+
 
         liEl1.textContent = "Sorry Wrong Answer";
         liEl2.textContent = "";
@@ -379,7 +399,7 @@ nextBtn4.addEventListener("click", function (event) {
     });
     liEl2.addEventListener("click", function (event) {
         event.preventDefault();
-        
+
 
         liEl1.textContent = "";
         liEl2.textContent = "Sorry Wrong Answer";
@@ -389,7 +409,7 @@ nextBtn4.addEventListener("click", function (event) {
     });
     liEl3.addEventListener("click", function (event) {
         event.preventDefault();
-        
+
 
         liEl1.textContent = "Sorry Wrong Answer";
         liEl2.textContent = "";
@@ -412,7 +432,7 @@ nextBtn5.addEventListener("click", function (event) {
     enterScore()
 
 
-    
+
 });
 highScoreEl.addEventListener("click", function (event) {
     event.preventDefault();
