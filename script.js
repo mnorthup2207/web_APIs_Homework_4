@@ -59,10 +59,13 @@ function setTime() {
             clearInterval(timerInterval);
             // sendMessage();
         }
+        if (secondsLeft < 25) {
+            timerEl.setAttribute("id", "timer");
+        
+        };
 
     }, 1000);
 };
-
 // function sendMessage() {
 //     timeEl.textContent = " ";
 
@@ -176,7 +179,9 @@ function highScores() {
 startBtn.addEventListener("click", function (event) {
     event.preventDefault();
     setTime();
-    firstQ()
+    firstQ();
+
+
     olEl.setAttribute("class", "olShow")
     // console.log(questions[0].title);
 });
