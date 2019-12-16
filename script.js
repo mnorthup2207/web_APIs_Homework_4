@@ -181,6 +181,45 @@ startBtn.addEventListener("click", function (event) {
     setTime();
     firstQ();
 
+    liEl1.addEventListener("click", function (event) {
+        event.preventDefault();
+        secondsLeft-=10;
+        
+        liEl1.textContent = "Sorry Wrong Answer";
+        liEl2.textContent = "";
+        liEl3.textContent = "";
+        liEl4.textContent = "";
+        
+    });
+    liEl2.addEventListener("click", function (event) {
+        event.preventDefault();
+        secondsLeft-=10;
+        
+        liEl1.textContent = "";
+        liEl2.textContent = "Sorry Wrong Answer";
+        liEl3.textContent = "";
+        liEl4.textContent = "";
+        
+    });
+    liEl3.addEventListener("click", function (event) {
+        event.preventDefault();
+    
+        liEl1.textContent = "";
+        liEl2.textContent = "";
+        liEl3.textContent = "Correct!!";
+        liEl4.textContent = "";
+        
+    });
+    liEl4.addEventListener("click", function (event) {
+        event.preventDefault();
+        secondsLeft-=10;
+        
+        liEl1.textContent = "";
+        liEl2.textContent = "";
+        liEl3.textContent = "";
+        liEl4.textContent = "Sorry Wrong Answer";
+        
+    });
 
     olEl.setAttribute("class", "olShow")
     // console.log(questions[0].title);
