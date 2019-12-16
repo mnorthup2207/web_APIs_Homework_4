@@ -2,14 +2,24 @@
     margin-top: 10%;  
     width: 65%;
     box-sizing: border-box;
-    border: solid black 1px;
 }
-
+body{
+    background-color: #19191B;
+    color: #CFBC81;
+    font-weight: bolder;
+}
 button{
     width: 25%;
     margin: 5% 0% 5% 35%;
+    background-color: #479860;
 }
-
+.card{
+    padding: 2%;
+    background-color: #D7CCCA;
+    color: #19191B;
+    box-sizing: border-box;
+    border: .25em solid #479860;
+}
 .startHide{
     display: none;
 }
@@ -42,3 +52,4 @@ button{
 .olHide{
     display: none;
 }
+
