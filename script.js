@@ -5,6 +5,7 @@ var nextBtn3 = document.querySelector(".nextHidden3");
 var nextBtn4 = document.querySelector(".nextHidden4");
 var nextBtn5 = document.querySelector(".nextHidden5");
 var nextBtn6 = document.querySelector(".nextHidden6");
+var nextBtn7 = document.querySelector(".nextHidden7");
 var timerEl = document.querySelector(".timer");
 var highScoreEl = document.querySelector(".highScores");
 
@@ -18,6 +19,10 @@ var liEl2 = document.querySelector(".li2")
 var liEl3 = document.querySelector(".li3")
 var liEl4 = document.querySelector(".li4")
 
+var point = localStorage.getItem("point")
+var names = localStorage.getItem("names")
+
+var points = 0;
 // question array
 var questions = [
     {
@@ -50,13 +55,13 @@ var questions = [
 
 // Timer function and variables
 var secondsLeft = 60; // setting timer
-
+var stop = 0;
 function setTime() {
     var timerInterval = setInterval(function () {
         secondsLeft--;
         timerEl.textContent = "Seconds Left: " + secondsLeft;
 
-        if (secondsLeft === 0) {
+        if (secondsLeft === 0 || stop > 0) {
             clearInterval(timerInterval);
             // sendMessage();
         }
@@ -92,9 +97,6 @@ function setTime() {
 
     }, 1000);
 };
-function sendMessage() {
-
-}
 
 // question functions
 function firstQ() {
@@ -173,10 +175,9 @@ function highScores() {
     h2El.textContent = "High Scores: ";
     olEl.setAttribute("class", "olShow");
     olEl.textContent = " ";
-    liEl1.textContent = "Name: "
-    liEl2.textContent = "Name: "
-    liEl3.textContent = "Name:"
-    liEl4.textContent = "Name: "
+    point = document.createElement("h5")
+    point.textContent = point;
+    h2El.appendChild(point);
 };
 
 function enterScore() {
@@ -189,11 +190,19 @@ function enterScore() {
     var name = document.createElement("label");
     name.textContent = "Enter Name:       ";
     mainEl.appendChild(name)
-
+    
     var nameInput = document.createElement("input");
     nameInput.setAttribute("type", "text");
     nameInput.setAttribute("placeholder", "name");
     mainEl.appendChild(nameInput);
+    nextBtn7.addEventListener("click", function() {
+        localStorage.setItem("names", nameInput.textContent);
+        localStorage.setItem("names", JSON.stringify(nameInput.text));
+        localStorage.setItem("point", points);
+        
+        location.reload()
+      
+    })
 
 
 };
@@ -205,47 +214,48 @@ startBtn.addEventListener("click", function (event) {
     event.preventDefault();
     setTime();
     firstQ();
-
+    
+    
     liEl1.addEventListener("click", function (event) {
         event.preventDefault();
         secondsLeft -= 10;
-
+        
         liEl1.textContent = "Sorry Wrong Answer";
         liEl2.textContent = "";
         liEl3.textContent = "";
         liEl4.textContent = "";
-
+        
     });
     liEl2.addEventListener("click", function (event) {
         event.preventDefault();
         secondsLeft -= 10;
-
+        
         liEl1.textContent = "";
         liEl2.textContent = "Sorry Wrong Answer";
         liEl3.textContent = "";
         liEl4.textContent = "";
-
+        
     });
     liEl3.addEventListener("click", function (event) {
         event.preventDefault();
-
+        points+=75
+        
         liEl1.textContent = "";
         liEl2.textContent = "";
         liEl3.textContent = "Correct!!";
         liEl4.textContent = "";
-
+        
     });
     liEl4.addEventListener("click", function (event) {
         event.preventDefault();
         secondsLeft -= 10;
-
+        
         liEl1.textContent = "";
         liEl2.textContent = "";
         liEl3.textContent = "";
         liEl4.textContent = "Sorry Wrong Answer";
-
+        
     });
-
     olEl.setAttribute("class", "olShow")
     // console.log(questions[0].title);
 });
@@ -253,75 +263,76 @@ startBtn.addEventListener("click", function (event) {
 nextBtn1.addEventListener("click", function (event) {
     event.preventDefault();
     secondQ();
-
+    
     liEl1.addEventListener("click", function (event) {
         event.preventDefault();
-
-
+        
+        
         liEl1.textContent = "Sorry Wrong Answer";
         liEl2.textContent = "";
         liEl3.textContent = "";
         liEl4.textContent = "";
-
+        
     });
     liEl2.addEventListener("click", function (event) {
         event.preventDefault();
-
-
+        
+        
         liEl1.textContent = "";
         liEl2.textContent = "Sorry Wrong Answer";
         liEl3.textContent = "";
         liEl4.textContent = "";
-
+        
     });
     liEl3.addEventListener("click", function (event) {
         event.preventDefault();
-
+        
         liEl1.textContent = "";
         liEl2.textContent = "";
         liEl3.textContent = "Correct!!";
         liEl4.textContent = "";
-
+        
     });
     liEl4.addEventListener("click", function (event) {
         event.preventDefault();
-
-
+        
+        
         liEl1.textContent = "";
         liEl2.textContent = "";
         liEl3.textContent = "";
         liEl4.textContent = "Sorry Wrong Answer";
-
+        
     });
 });
 nextBtn2.addEventListener("click", function (event) {
     event.preventDefault();
     thirdQ();
-
+    
     liEl1.addEventListener("click", function (event) {
         event.preventDefault();
         secondsLeft += 10;
-
+        points+=75
+        
         liEl1.textContent = "Correct!!";
         liEl2.textContent = "";
         liEl3.textContent = "";
         liEl4.textContent = "";
-
+        
     });
     liEl2.addEventListener("click", function (event) {
         event.preventDefault();
-
-
+        
+        
         liEl1.textContent = "";
         liEl2.textContent = "Sorry Wrong Answer";
         liEl3.textContent = "";
         liEl4.textContent = "";
-
+        
     });
     liEl3.addEventListener("click", function (event) {
         event.preventDefault();
         secondsLeft -= 10;
-
+        points -=75
         liEl1.textContent = "";
         liEl2.textContent = "";
         liEl3.textContent = "Sorry Wrong Answer";
@@ -329,44 +340,43 @@ nextBtn2.addEventListener("click", function (event) {
     });
     liEl4.addEventListener("click", function (event) {
         event.preventDefault();
-
-
+        
+        
         liEl1.textContent = "";
         liEl2.textContent = "";
         liEl3.textContent = "";
         liEl4.textContent = "Sorry Wrong Answer";
-
+        
     });
-
 });
 nextBtn3.addEventListener("click", function (event) {
     event.preventDefault();
     fourthQ();
-
+    
     liEl1.addEventListener("click", function (event) {
         event.preventDefault();
         secondsLeft -= 10;
-
+        points-=75
         liEl1.textContent = "Sorry Wrong Answer";
         liEl2.textContent = "";
         liEl3.textContent = "";
         liEl4.textContent = "";
-
+        
     });
     liEl2.addEventListener("click", function (event) {
         event.preventDefault();
-
-
+        
+        
         liEl1.textContent = "";
         liEl2.textContent = "Sorry Wrong Answer";
         liEl3.textContent = "";
         liEl4.textContent = "";
-
+        
     });
     liEl3.addEventListener("click", function (event) {
         event.preventDefault();
-
-
+        points+=75
+        
         liEl1.textContent = "";
         liEl2.textContent = "";
         liEl3.textContent = "Sorry Wrong Answer";
@@ -375,42 +385,43 @@ nextBtn3.addEventListener("click", function (event) {
     liEl4.addEventListener("click", function (event) {
         event.preventDefault();
         secondsLeft += 10;
-
+        points+=75
+        
         liEl1.textContent = "";
         liEl2.textContent = "";
         liEl3.textContent = "";
         liEl4.textContent = "Correct!!";
-
+        
     });
 });
 nextBtn4.addEventListener("click", function (event) {
     event.preventDefault();
     fifthQ();
-
+    
     liEl1.addEventListener("click", function (event) {
         event.preventDefault();
-
-
+        
+        
         liEl1.textContent = "Sorry Wrong Answer";
         liEl2.textContent = "";
         liEl3.textContent = "";
         liEl4.textContent = "";
-
+        
     });
     liEl2.addEventListener("click", function (event) {
         event.preventDefault();
-
-
+        
+        
         liEl1.textContent = "";
         liEl2.textContent = "Sorry Wrong Answer";
         liEl3.textContent = "";
         liEl4.textContent = "";
-
+        
     });
     liEl3.addEventListener("click", function (event) {
         event.preventDefault();
-
-
+        
+        
         liEl1.textContent = "Sorry Wrong Answer";
         liEl2.textContent = "";
         liEl3.textContent = "";
@@ -418,23 +429,29 @@ nextBtn4.addEventListener("click", function (event) {
     });
     liEl4.addEventListener("click", function (event) {
         event.preventDefault();
-
+        
         liEl1.textContent = "";
         liEl2.textContent = "";
         liEl3.textContent = "";
         liEl4.textContent = "Correct!!";
-
+        
     });
-
 });
 nextBtn5.addEventListener("click", function (event) {
     event.preventDefault();
     enterScore()
-
-
-
+    stop+=1
+    var pointsEl = document.createElement("h4")
+    pointsEl.textContent = `You got ${points} points!`
+    mainEl.prepend(pointsEl);
+    
+    
+    nextBtn5.setAttribute("class", "nextHidden5")
+    nextBtn7.setAttribute("class", "show")
 });
+
 highScoreEl.addEventListener("click", function (event) {
-    event.preventDefault();
     highScores()
+    event.preventDefault();
+    
 });
